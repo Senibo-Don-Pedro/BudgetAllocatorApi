@@ -43,9 +43,11 @@ public class IncomeProfilesController: ControllerBase
     [EndpointSummary("Get all income profiles")]
     [EndpointDescription("Returns a list of all saved income profiles ordered from newest to oldest, including their budget categories.")]
     [ProducesResponseType(typeof(BaseResponse<List<IncomeProfileResponse>>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<BaseResponse<List<IncomeProfileResponse>>>> GetAll()
+    public async Task<ActionResult<BaseResponse<List<IncomeProfileResponse>>>> GetAll(
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10)
     {
-        var result = await _incomeProfileService.GetAllAsync();
+        var result = await _incomeProfileService.GetAllAsync(pageNumber, pageSize);
         return Ok(result); // HTTP 200
     }
     

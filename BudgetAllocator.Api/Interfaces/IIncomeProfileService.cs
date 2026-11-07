@@ -9,7 +9,7 @@ public interface IIncomeProfileService
 {
     Task<BaseResponse<IncomeProfileResponse>> CreateAsync(CreateIncomeProfileRequest request);
 
-    Task<BaseResponse<List<IncomeProfileResponse>>> GetAllAsync();
+    Task<BaseResponse<PagedData<IncomeProfileResponse>>> GetAllAsync(int pageNumber, int pageSize);
 
     Task<BaseResponse<IncomeProfileResponse>> GetByIdAsync(Guid id);
 
